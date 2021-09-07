@@ -28,10 +28,12 @@ module.exports = async (query, request) => {
         'Content-Type': 'audio/mpeg',
         'Content-Length': String(query.songFile.size),
       },
+      maxContentLength: Infinity,
+      maxBodyLength: Infinity,
       data: query.songFile.data,
     })
   } catch (error) {
-    console.log('error', error.response)
+    console.log('error--->', error)
   }
   return {
     ...tokenRes,

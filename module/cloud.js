@@ -71,13 +71,13 @@ module.exports = async (query, request) => {
     //   //   songName,
     //   // })
     // }
-    // console.log({
-    //   songName,
-    //   album,
-    //   songName,
-    // })
+    console.log({
+      songName,
+      album,
+      artist,
+    })
   } catch (error) {
-    console.log(error)
+    console.log('80', error)
   }
   const tokenRes = await request(
     'POST',
@@ -98,7 +98,7 @@ module.exports = async (query, request) => {
     const uploadInfo = await uploadPlugin(query, request)
     // console.log('uploadInfo', uploadInfo.body.result.resourceId)
   }
-  // console.log(tokenRes.body.result)
+  // console.log('tokenRes.body.result', tokenRes.body.result)
   const res2 = await request(
     'POST',
     `https://music.163.com/api/upload/cloud/info/v2`,
@@ -119,7 +119,7 @@ module.exports = async (query, request) => {
       realIP: query.realIP,
     },
   )
-  // console.log({ res2, privateCloud: res2.body.privateCloud })
+  // console.log('res2', { res2, privateCloud: res2.body.privateCloud })
   // console.log(res.body.songId, 'songid')
   const res3 = await request(
     'POST',
@@ -134,7 +134,7 @@ module.exports = async (query, request) => {
       realIP: query.realIP,
     },
   )
-  // console.log({ res3 })
+  console.log('res3', { res3 })
   return {
     status: 200,
     body: {

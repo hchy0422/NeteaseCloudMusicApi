@@ -14,6 +14,7 @@
   <script>
     const phone = '' // 这里填手机号
     const password = '' // 这里填密码
+    const countrycode = ''
     const fileUpdateTime = {}
     let fileLength = 0
     let cookieToken = ''
@@ -22,11 +23,11 @@
       alert(msg)
       throw new Error(msg)
     }
-    login()
+    // login()
     main()
     async function login() {
       const res = await axios({
-        url: `/login/cellphone?phone=${phone}&password=${encodeURIComponent(password)}`,
+        url: `/login/cellphone?countrycode=${countrycode}&phone=${phone}&password=${encodeURIComponent(password)}`,
         withCredentials: true, //关键
       })
       cookieToken = res.data.cookie
@@ -68,8 +69,8 @@
         } else {
           console.error(`${file.name} 失败 ${fileUpdateTime[file.name]} 次`)
         }
-        await login()
-        upload(file, currentIndx)
+        // await login()
+        // upload(file, currentIndx)
       })
     }
   </script>
